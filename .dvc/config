@@ -1,8 +1,10 @@
 [core]
-    remote = localremote
+    remote = localstorage
 ['remote "myremote"']
     url = s3://yourbucket/mlops-demo
 ['remote "gdrive_remote"']
     url = gdrive://1wSIp_l83KzGE6AxNnPxGy0nJWERlOvS2
 ['remote "localremote"']
     url = /home/madhav/Desktop/dvc-storage
+['remote "localstorage"']
+    url = /home/madhav/Desktop/MLOPS/dvc-storage
