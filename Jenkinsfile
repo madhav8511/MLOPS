@@ -10,27 +10,29 @@ pipeline {
             }
         }
 
-        stage('Install Dependencies') {
+         stage('Setup Python venv') {
             steps {
-                sh 'pip install -r requirement.txt'
+                sh 'python3 -m venv mlops'
+                sh '. venv/bin/activate && pip install --upgrade pip'
+                sh '. venv/bin/activate && pip install -r requirements.txt'
             }
         }
 
-        stage('Pull Data (DVC)') {
+        stage('DVC Pull') {
             steps {
-                sh 'dvc pull'
+                sh '. mlops/bin/activate && dvc pull'
             }
         }
 
-        stage('Run Pipeline (DVC)') {
+        stage('Run DVC Pipeline') {
             steps {
-                sh 'dvc repro'
+                sh '. mlops/bin/activate && dvc repro'
             }
         }
 
-        stage('Push Artifacts') {
+        stage('DVC Push') {
             steps {
-                sh 'dvc push'
+                sh '. mlops/bin/activate && dvc push'
             }
         }
 
