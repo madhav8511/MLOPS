@@ -14,7 +14,7 @@ pipeline {
             steps {
                 sh 'python3 -m venv mlops'
                 sh '. mlops/bin/activate && pip install --upgrade pip'
-                sh '. mlops/bin/activate && pip install -r requirements.txt'
+                sh '. mlops/bin/activate && pip install -r requirement.txt'
             }
         }
 
