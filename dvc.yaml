@@ -1,0 +1,25 @@
+stages:
+  clean:
+    cmd: python src/data_cleaning.py
+    deps:
+      - src/data_cleaning.py
+      - data/raw/iris.csv
+    outs:
+      - data/processed.csv
+
+  train:
+    cmd: python src/train.py
+    deps:
+      - src/train.py
+      - data/processed.csv
+      - params.yaml
+    outs:
+      - models/model.pkl
+
+  evaluate:
+    cmd: python src/evaluate.py
+    deps:
+      - src/evaluate.py
+      - models/model.pkl
+    metrics:
+      - metrics.json
