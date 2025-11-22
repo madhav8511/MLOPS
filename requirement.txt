@@ -1,4 +1,4 @@
 pandas
 scikit-learn
-dvc[s3]
+dvc
 joblib
